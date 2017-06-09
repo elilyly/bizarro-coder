@@ -19,22 +19,15 @@ export default class NavBar extends Component {
             <div className="ui fixed inverted menu navbar">
               <Menu color='black' inverted >
                 <Menu.Item header>BizarroCoder</Menu.Item>
-                <Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}>
-                  Profile
-                </Menu.Item>
+                <Link to='/profile'><Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}/></Link>
 
-                <Menu.Item name='quizzes' active={activeItem === 'quizzes'} onClick={this.handleItemClick}>
-                  Quizzes
-                </Menu.Item>
+                <Link to='/quizzes'><Menu.Item name='quizzes' active={activeItem === 'quizzes'} onClick={this.handleItemClick}/></Link>
 
                <Menu.Menu  position='right'>
-                 <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}>
-                   Log Out
-                 </Menu.Item>
+                <Link to='/'><Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}/></Link>
 
-                 <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}>
-                   Help
-                 </Menu.Item>
+
+                 <Link to='/help'><Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}/></Link>
                </Menu.Menu>
               </Menu>
             </div>

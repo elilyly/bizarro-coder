@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import ProfileCard from './ProfileCard.js';
-import NavBar from './NavBar.js'
-import './App.css';
+import React from 'react'
+// import ProfileCard from './ProfileCard';
+// import Questions from './Questions'
+// import QuestionsContainer from './containers/QuestionsContainer'
+import {  Switch, Route } from 'react-router-dom'
+import NavBar from './NavBar'
+import QuestionsContainer from './containers/QuestionsContainer'
+import './App.css'
 
-class App extends Component {
-  render() {
+export default () => {
     return (
-      <div>
+      <div className="container-fluid">
         <NavBar />
-        <ProfileCard />
+          <Switch>
+                <Route path='/quizzes' component={QuestionsContainer} />
+                <Route exact path='/help' render={() => <h1>To start a quiz press the start button</h1>} />
+          </Switch>
       </div>
     )
   }
-}
-
-export default App;

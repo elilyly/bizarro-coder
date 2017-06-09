@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image, Grid, List } from 'semantic-ui-react'
 var styles = {
-color:'white',
+color:'black',
 fontWeight:'light'
 };
 const ProfileCard = () => (

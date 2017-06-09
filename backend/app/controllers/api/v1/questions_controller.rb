@@ -4,12 +4,4 @@ class Api::V1::QuestionsController < ApplicationController
     render json: @questions
   end
 
-
-
-
-
-
-
-
-
 end
