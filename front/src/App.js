@@ -5,6 +5,7 @@ import React from 'react'
 import {  Switch, Route } from 'react-router-dom'
 import NavBar from './NavBar'
 import QuestionsContainer from './containers/QuestionsContainer'
+import AnswersContainer from './containers/AnswersContainer'
 import './App.css'
 
 export default () => {
@@ -13,7 +14,8 @@ export default () => {
         <NavBar />
           <Switch>
                 <Route path='/quizzes' component={QuestionsContainer} />
-                <Route exact path='/help' render={() => <h1>To start a quiz press the start button</h1>} />
+                <Route path='/help' component={AnswersContainer} />
+                {/* <Route exact path='/help' render={() => <h1>To start a quiz press the start button</h1>} /> */}
           </Switch>
       </div>
     )
