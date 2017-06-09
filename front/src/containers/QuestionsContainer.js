@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Question from '../Question'
 import QuestionShow from '../QuestionShow'
 import { fetchQuestions }  from '../api/index'
 import { Route, Redirect, Switch } from 'react-router-dom'
@@ -12,6 +13,7 @@ class QuestionsContainer extends Component {
   }
 
   componentDidMount() {
+    console.log("hi");
     fetchQuestions()
     .then( questions => this.setState({
       questions: questions
@@ -22,9 +24,11 @@ class QuestionsContainer extends Component {
     return(
       <div>
         <Switch>
+          <Route exact path='/questions' render={() =>  <Question questions={this.state.questions}/>}/>
           <Route path='/questions/:id' render={({match}) => {
             const question = this.state.questions.find(question => question.id === parseInt(match.params.id))
-            return <QuestionShow questions={this.state.questions}/> }}
+
+            return <QuestionShow question={question}/> }}
           />
         </Switch>
       </div>

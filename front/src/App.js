@@ -12,7 +12,7 @@ export default () => {
       <div className="container-fluid">
         <NavBar />
           <Switch>
-                <Route path='/questions' component={QuestionsContainer} />
+                <Route path='/questions/' component={QuestionsContainer} />
                 <Route path='/answers' component={AnswersContainer} />
                 <Route path='/profile' component={ProfileCard} />
                 <Route path='/login' component={UsersContainer} />
