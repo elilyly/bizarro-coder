@@ -3,6 +3,4 @@ class Api::V1::AnswersController < ApplicationController
     @answers = Answer.all
     render json: @answers
   end
-
-
 end
