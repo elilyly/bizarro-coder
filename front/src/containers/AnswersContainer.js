@@ -24,6 +24,5 @@ class AnswersContainer extends Component {
       </div>
     )
   }
-
 }
 export default AnswersContainer

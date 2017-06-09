@@ -3,13 +3,10 @@ export function fetchQuestions(){
   .then(response => response.json())
 }
 
-
 export function fetchAnswers(){
   return fetch('http://localhost:3000/api/v1/answers')
   .then(response => response.json())
 }
-
-
 
 export function fetchUsers(){
   return fetch("http://localhost:3000/api/v1/users")
