@@ -27,8 +27,7 @@ class QuestionsContainer extends Component {
           <Route exact path='/questions' render={() =>  <Question questions={this.state.questions}/>}/>
           <Route path='/questions/:id' render={({match}) => {
             const question = this.state.questions.find(question => question.id === parseInt(match.params.id))
-
-            return <QuestionShow question={question}/> }}
+              return <QuestionShow question={question}/> }}
           />
         </Switch>
       </div>

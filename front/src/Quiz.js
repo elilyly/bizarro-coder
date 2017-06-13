@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import { Link, Switch, Route } from 'react-router-dom'
 import { Grid, Form, TextArea } from 'semantic-ui-react'
-import Question from './Question'
-// import Main from './Main'
+import QuizSelection from './QuizSelection'
+import QuestionShow from './QuestionShow'
 import NextQuestion from './NextQuestion'
 
-function QuestionShow(props) {
-  console.log("HERE ARE THE QUESTION SHOW PROPS:", props);
+function Quiz(props) {
+  // const quizList = props.questions.map((question, i) =>
+  //   <div key={question.id}>
+  //      <Link to={`/quizzes/${question.id}`}>{question.content}</Link>
+  //   </div>
+  // )
   return(
     <div className="ui page grid main fluid">
       <div className="row">
@@ -13,7 +18,7 @@ function QuestionShow(props) {
           <Grid centered>
             <Grid.Row container centered><br/><br/>
               <h1>Question</h1><br/><br/><br/>
-              {/* <h2>{props.question.content}</h2> */}
+              {/* <QuestionShow /> */}
             </Grid.Row>
             <Grid.Row container centered><br/><br/>
             <NextQuestion />
@@ -24,4 +29,4 @@ function QuestionShow(props) {
     </div>
   )
 }
-export default QuestionShow
+export default Quiz

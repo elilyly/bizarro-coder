@@ -19,6 +19,7 @@ export default class UserForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
+    // console.log(this.state.user);
     this.props.onSubmit( this.state.user )
     this.setState({user: ''})
   }
@@ -29,8 +30,7 @@ export default class UserForm extends React.Component {
         <Form.Field>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>Username</label>
-          <input placeholder='Username' />
-          <input type='text' value={this.state.user} onChange={this.handleInputChange}/>
+          <input placeholder='Username' type='text' value={this.state.user} onChange={this.handleInputChange}/>
           <input type='submit' value='Sign in'/>
         </form>
         </Form.Field>
