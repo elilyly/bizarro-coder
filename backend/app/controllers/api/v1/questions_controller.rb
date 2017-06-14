@@ -8,6 +8,4 @@ class Api::V1::QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     render json: @question
   end
-
-
 end
