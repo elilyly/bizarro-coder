@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import UsersApp from '../UsersApp'
+// import UsersApp from '../UsersApp'
+import UserForm from '../UserForm'
+
 import { fetchUsers, createUser }  from '../api'
 
 class UsersContainer extends Component {
@@ -25,7 +27,7 @@ class UsersContainer extends Component {
 
   render(){
     return (
-      < UsersApp users={this.state.users} onSubmit={this.handleAddUser.bind(this)} />
+      <UserForm users={this.state.users} onSubmit={this.handleAddUser.bind(this)} />
     )
   }
 }

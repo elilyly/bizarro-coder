@@ -14,10 +14,10 @@ export default function QuizSelection(props) {
              </Grid.Row>
 
              <Grid.Row container centered><br/>
-              <Link to='/quizzes/ruby/questions'><Button basic  color='red' size='massive'>Ruby</Button></Link>
+              <Link to='/quizzes/ruby/questions/1'><Button basic  color='red' size='massive'>Ruby</Button></Link>
              </Grid.Row>
              <Grid.Row><br/>
-{/*
+                            {/*
                              <Route path='/quizzes/ruby/questions/:id' render={({match}) => {
                                const question = this.state.questions.find(question => question.id === parseInt(match.params.id))
                                  return <QuestionShow question={question}/> }}

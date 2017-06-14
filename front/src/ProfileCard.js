@@ -1,10 +1,13 @@
 import React from 'react'
-import UsersApp from './UsersApp'
+// import UsersApp from './UsersApp'
+import UserForm from './UserForm'
 import { Card, Image, Grid, List } from 'semantic-ui-react'
   var styles = {
   color:'black',
   fontWeight:'light'
   };
+
+
 const ProfileCard = (props) => (
   <Grid container columns={3}>
     <Grid.Row>
@@ -21,7 +24,7 @@ const ProfileCard = (props) => (
         <Card>
           <Image src='http://24.media.tumblr.com/tumblr_mcrbpe6AYQ1rf9u8oo1_250.gif' />
           <Card.Content>
-            <Card.Header>Name: {props.users}</Card.Header>
+            <Card.Header>Name: </Card.Header>
             <Card.Description>Marge is a comedian living in Springfield.</Card.Description>
           </Card.Content>
         </Card>

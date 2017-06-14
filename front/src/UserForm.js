@@ -1,11 +1,12 @@
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react'
-
+import { Button, Form, Grid, Header, Icon } from 'semantic-ui-react'
+import { Link, Switch, Route } from 'react-router-dom'
 export default class UserForm extends React.Component {
 
   constructor(props){
-    super()
-    this.state = { user: ''}
+    super(props)
+    this.state = { user: ''
+  }
 
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,15 +27,26 @@ export default class UserForm extends React.Component {
 
   render(){
     return (
+      <Grid centered>
+        <Grid.Row container centered><br/><br/>
+        <Header as='h2'>
+          <Icon name='sign in'/>
+          <Header.Content>
+            Sign In
+          </Header.Content>
+        </Header>
+        <Grid.Row container centered><br/><br/>
       <Form>
         <Form.Field>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>Username</label>
           <input placeholder='Username' type='text' value={this.state.user} onChange={this.handleInputChange}/>
-          <input type='submit' value='Sign in'/>
+          <Link to='/profile'><Button basic color="blue">Sign Up</Button></Link>
         </form>
         </Form.Field>
       </Form>
+    </Grid.Row>
+    </Grid.Row>
+  </Grid>
     )
   }
 }
