@@ -9,9 +9,10 @@
   export default function Question(props) {
     console.log("THIS", props.questions[0]);
     const questionsList = props.questions.map((question, i) => {
-      return <QuestionShow key={question.id} question={question.content}/>
+      return <div>
+        <QuestionShow key={question.id} id={question.id} question={question.content}/>
+      </div>
   })
-
 
   //filter answer_id & questionid
 
@@ -23,7 +24,7 @@
             <Grid.Row container centered><br/>
               <Grid.Row container centered><br/><br/><br/>
                 <h1> Start your Quiz! </h1>
-                {questionsList[0]}
+                {questionsList}
               </Grid.Row>
             </Grid.Row>
           </Grid>

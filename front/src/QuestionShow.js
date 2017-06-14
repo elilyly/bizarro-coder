@@ -4,8 +4,8 @@ import { Grid, Form, TextArea, Card } from 'semantic-ui-react'
 // import Main from './Main'
 import NextQuestion from './NextQuestion'
 
-function QuestionShow( {question} ) {//use props
-  console.log("HERE ARE THE QUESTION SHOW PROPS:", question);
+function QuestionShow( props ) {//use props
+  // console.log("HERE ARE THE QUESTION SHOW PROPS:", question);
 
   return(
     <div className="ui page grid main fluid">
@@ -16,10 +16,10 @@ function QuestionShow( {question} ) {//use props
               <Card.Group><br/><br/><br/><br/>
                 <Card>
                   <Card.Content>
-                    <Card.Header>Question</Card.Header>
-                    <Card.Description>{question}</Card.Description>
+                    <Card.Header>Question {props.id}</Card.Header>
+                    <Card.Description>{props.question}</Card.Description>
                     <Grid.Row container centered><br/><br/>
-                    <Card.Description><NextQuestion question={question}/></Card.Description>
+                    <Card.Description><NextQuestion question={props.question}/></Card.Description>
                     </Grid.Row>
                   </Card.Content>
                 </Card>
