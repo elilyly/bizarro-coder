@@ -31,7 +31,7 @@ export default class NextQuestion extends Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.state.input === this.props.currentAnswer ? this.props.onClick() : console.log('wrong answer')
+    this.state.input !== this.props.currentAnswer ? this.props.onClick() : console.log('wrong answer')
     this.setState({
       input: ''
     })

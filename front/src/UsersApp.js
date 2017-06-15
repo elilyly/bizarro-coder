@@ -3,10 +3,8 @@ import { Route, Link, Switch } from 'react-router-dom'
 import UserForm from './UserForm'
 
 function UsersApp(props) {
-  const nameEls = props.users.map( (user, i) =>
-    <li key={i}>{user.username}</li>
-  )
-
+  // const nameEls = props.users.map( (user, i) =>
+  //   <li key={i}>{user.username}</li>
   return (
       <div>
         <div className='col-md-4'>

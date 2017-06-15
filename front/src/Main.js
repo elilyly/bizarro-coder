@@ -7,6 +7,7 @@ import Question from './Question'
 import QuestionShow from './QuestionShow'
 import QuizSelection from './QuizSelection'
 import UsersContainer from './containers/UsersContainer'
+import Home from './Home'
 
 class Main extends Component {
   constructor(props) {
@@ -50,6 +51,7 @@ class Main extends Component {
       <div>
         <Switch>
           <Route path='/profile' component={ProfileCard} />
+          {/* <Route path='/login' component={Home} /> */}
           <Route exact path='/quizzes/ruby/questions/1' render={() =>  <Question currentQuestion={this.state.currentQuestion} currentAns={this.state.currentAnswer} answers={this.state.answers} onClick={this.handleNextQuestion.bind(this)} />} />
           <Route path='/quizzes/ruby/questions/:id' render={({match}) => {
             const question = this.state.questions.find(question => question.id === parseInt(match.params.id))
@@ -70,14 +72,12 @@ export default Main
  /> */}
  {/* <Route path='/answers' component={AnswersContainer} /> */}
  {/* <Route path='/quizzes' component={QuizContainer} />
- <Route path='/' component={Home} />
  <Route path='/help' component={Help} />  */}
  {/* <Route exact path='/help' render={() => <h1>To start a quiz press the start button</h1>} /> */}
  // import NextQuestion from './NextQuestion'
  // import QuestionsContainer from './containers/QuestionsContainer'
  // import AnswersContainer from './containers/AnswersContainer'
  // import QuizContainer from './containers/QuizContainer'
- // import Home from './Home'
  // import Help from './Help'
 
  // handleAddUserAnswer(input){

@@ -22,7 +22,7 @@ export default class NavBar extends Component {
                   <Link to='/quizzes'><Menu.Item name='quizzes' active={activeItem === 'quizzes'} onClick={this.handleItemClick}/></Link>
 
                 <Menu.Menu  position='right'>
-                  <Link to='/'><Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}/></Link>
+                  <Link to='/login'><Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick}/></Link>
 
                   <Link to='/help'><Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}/></Link>
                </Menu.Menu>

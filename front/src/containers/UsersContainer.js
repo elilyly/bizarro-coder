@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import UsersApp from '../UsersApp'
-import UserForm from '../UserForm'
+import UsersApp from '../UsersApp'
+// import UserForm from '../UserForm'
 
 import { fetchUsers, createUser }  from '../api'
 
@@ -19,15 +19,15 @@ class UsersContainer extends Component {
       }) )
   }
 
-  handleAddUser(username){
-    createUser(username)
+  handleAddUser(username, firstName, lastName, password){
+    createUser(username, firstName, lastName, password)
       .then( user => this.setState( prevState =>  ({ users: [...prevState.users, user] }) ))
       .catch(e => console.log(e))
   }
 
   render(){
     return (
-      <UserForm users={this.state.users} onSubmit={this.handleAddUser.bind(this)} />
+      <UsersApp users={this.state.users} onSubmit={this.handleAddUser.bind(this)} />
     )
   }
 }

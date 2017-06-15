@@ -29,14 +29,13 @@ export function fetchUserAnswers() {
     .then( res => res.json() )
 }
 
-
-export function createUser(username){
+export function createUser(username, firstName, lastName, password){
   return fetch("http://localhost:3000/api/v1/users", {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     method: 'POST',
-    body: JSON.stringify( {user: {username: username}} )
+    body: JSON.stringify( {user: {username: username, first_name: firstName, last_name: lastName, password_digest: password}} )
   })
 }
