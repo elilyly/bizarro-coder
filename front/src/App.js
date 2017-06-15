@@ -1,6 +1,5 @@
 import React from 'react'
 import {  Switch, Route } from 'react-router-dom'
-// import ProfileCard from './ProfileCard';
 import NavBar from './NavBar'
 import Main from './Main'
 // import QuestionsContainer from './containers/QuestionsContainer'
@@ -15,7 +14,7 @@ export default () => {
 
     return (
       <div className="container-fluid">
-        <NavBar />
+        <NavBar /><br/><br/><br/>
         <Main />
           {/* <Switch>
                 <Route path='/questions/' component={QuestionsContainer} />

@@ -21,7 +21,7 @@
               <Grid.Row container centered><br/><br/><br/>
               <h1> Start your Quiz! </h1>
               <div>
-                <QuestionShow key={props.currentQuestion.id} id={props.currentQuestion.id} question={props.currentQuestion.content}/>
+                <QuestionShow key={props.currentQuestion.id} id={props.currentQuestion.id} question={props.currentQuestion.content} answers={props.answers} currentAns={props.currentAns} onClick={props.onClick}/>
               </div>
               </Grid.Row>
             </Grid.Row>

@@ -10,6 +10,11 @@ class Api::V1::UserAnswersController < ApplicationController
     render json: @user_answer
   end
 
+  def show
+    @user_answer = UserAnswer.find(params[:id])
+    render json: @user_answer
+  end
+
   private
   def userAnswer_params
     params.require(:user_answer).permit(:input)

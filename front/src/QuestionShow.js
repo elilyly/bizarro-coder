@@ -19,7 +19,7 @@ function QuestionShow( props ) {//use props
                     <Card.Header>Question {props.id}</Card.Header>
                     <Card.Description>{props.question}</Card.Description>
                     <Grid.Row container centered><br/><br/>
-                    <Card.Description><NextQuestion question={props.question}/></Card.Description>
+                    <Card.Description><NextQuestion question={props.question} onClick={props.onClick} currentAns={props.currentAns} answers={props.answers}/></Card.Description>
                     </Grid.Row>
                   </Card.Content>
                 </Card>
