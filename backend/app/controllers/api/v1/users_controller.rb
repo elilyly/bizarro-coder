@@ -1,5 +1,16 @@
 class Api::V1::UsersController < ApplicationController
+
   def index
+    token = request.headers['Authorization']
+    if token.present?
+      decoded = JWT.decode(token, ENV['JWT_SECRET'], true, {algorithm: "HS256"})
+      user = User.find_by(id: decoded.first['user_id'])
+      if !user.present?
+        render json: {error: 'Token invalid'}
+      end
+    else
+      render json: {error: 'No Authorization Present'} and return
+    end
     @users = User.all
     render json: @users
   end
