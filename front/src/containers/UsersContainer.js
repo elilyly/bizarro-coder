@@ -14,6 +14,9 @@ class UsersContainer extends Component {
   }
 
   componentDidMount(){
+    if (!localStorage.getItem('jwt')){
+      return this.props.history.push('/login')
+    }
     fetchUsers()
       .then( users => this.setState({
         users: users

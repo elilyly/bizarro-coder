@@ -16,7 +16,7 @@ const AuthedUsersContainer = isAuthenticated(UsersContainer)
 class Main extends Component {
   constructor(props) {
     super(props)
-    this.handleLogin = this.handleLogin.bindd(this)
+    this.handleLogin = this.handleLogin.bind(this)
 
     this.state = {
       questions: [],
@@ -25,6 +25,7 @@ class Main extends Component {
       currentAnswer: null
     }
   }
+
   handleLogin(params){
     logIn(params)
     .then(res => {
@@ -32,7 +33,7 @@ class Main extends Component {
         return
       }
       localStorage.setItem('jwt', res.token)
-      this.props.history.push('/users')
+      this.props.history.push('/profile')
     })
   }
 
@@ -69,7 +70,7 @@ class Main extends Component {
           <Route path='/out' component={Home} />
           <Route path='/login' render={() => <LoginForm handleLogin={this.handleLogin}/>}/>
           <Route path='/profile' component={ProfileCard}  />
-          <Route path='/users' component={AuthedUsersContainer}/>
+          <Route path='/profile' component={AuthedUsersContainer}/>
           <Route exact path='/quizzes/ruby/questions/1' render={() =>  <Question currentQuestion={this.state.currentQuestion} currentAns={this.state.currentAnswer} answers={this.state.answers} onClick={this.handleNextQuestion.bind(this)} />} />
           <Route path='/quizzes/ruby/questions/:id' render={({match}) => {
             const question = this.state.questions.find(question => question.id === parseInt(match.params.id))

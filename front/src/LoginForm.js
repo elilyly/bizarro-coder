@@ -10,7 +10,7 @@ export default class LoginForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(props, value) {
+  handleChange(prop, value) {
     this.setState({
       [prop]: value
     })
@@ -29,6 +29,7 @@ export default class LoginForm extends Component {
         <input type='text' value={this.state.username} onChange={e => this.handleChange('username', e.target.value)}/>
         <label>Password</label>
         <input type='password' value={this.state.password} onChange={e => this.handleChange('password', e.target.value)}/>
+        <input type='submit' value='Log In'/>
       </form>
    )
   }

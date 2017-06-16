@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :users
       resources :user_answers, only: [:index, :show, :update]
       resources :quizzes, only: [:index, :show, :destroy]
+      resources :auth,  only:[:create]
     end
   end
 end

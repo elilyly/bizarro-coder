@@ -9,7 +9,7 @@ export default function isAuthorized(WrappedComponent, authorized){
         return null
       }
 
-      return < WrappedComponent {...this.props} />
+      return <WrappedComponent {...this.props} />
     }
   }
 }

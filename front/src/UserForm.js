@@ -86,7 +86,6 @@ export default class UserForm extends React.Component {
         </Grid.Row>
         </Grid.Row>
       </Grid>
-
     </Container>
     <Route path='/profile' render={() =>  <ProfileCard user={this.state.user}/>}  />
   </div>
