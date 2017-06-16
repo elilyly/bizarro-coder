@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { fetchQuestions, fetchAnswers, createUserAnswers }  from './api/index'
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { fetchQuestions, fetchAnswers, createUserAnswers, logIn }  from './api/index'
+import { Switch, Route, withRouter } from 'react-router-dom'
 
 import ProfileCard from './ProfileCard'
 import Question from './Question'
@@ -8,10 +8,15 @@ import QuestionShow from './QuestionShow'
 import QuizSelection from './QuizSelection'
 import UsersContainer from './containers/UsersContainer'
 import Home from './Home'
+import LoginForm from './LoginForm'
+import isAuthenticated from './hocs/isAuthenticated'
+
+const AuthedUsersContainer = isAuthenticated(UsersContainer)
 
 class Main extends Component {
   constructor(props) {
     super(props)
+    this.handleLogin = this.handleLogin.bindd(this)
 
     this.state = {
       questions: [],
@@ -19,6 +24,16 @@ class Main extends Component {
       answers: [],
       currentAnswer: null
     }
+  }
+  handleLogin(params){
+    logIn(params)
+    .then(res => {
+      if(res.error) {
+        return
+      }
+      localStorage.setItem('jwt', res.token)
+      this.props.history.push('/users')
+    })
   }
 
   componentDidMount() {
@@ -46,13 +61,15 @@ class Main extends Component {
     })
   }
 
+
   render() {
     return(
       <div>
         <Switch>
           <Route path='/out' component={Home} />
+          <Route path='/login' render={() => <LoginForm handleLogin={this.handleLogin}/>}/>
           <Route path='/profile' component={ProfileCard}  />
-
+          <Route path='/users' component={AuthedUsersContainer}/>
           <Route exact path='/quizzes/ruby/questions/1' render={() =>  <Question currentQuestion={this.state.currentQuestion} currentAns={this.state.currentAnswer} answers={this.state.answers} onClick={this.handleNextQuestion.bind(this)} />} />
           <Route path='/quizzes/ruby/questions/:id' render={({match}) => {
             const question = this.state.questions.find(question => question.id === parseInt(match.params.id))
@@ -64,7 +81,7 @@ class Main extends Component {
     )
   }
 }
-export default Main
+export default withRouter(Main)
 
 
 {/* <Route path='/quizzes' render={({match}) => {
