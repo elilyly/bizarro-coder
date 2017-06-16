@@ -50,14 +50,15 @@ class Main extends Component {
     return(
       <div>
         <Switch>
-          <Route path='/profile' component={ProfileCard} />
-          {/* <Route path='/login' component={Home} /> */}
+          <Route path='/out' component={Home} />
+          <Route path='/profile' component={ProfileCard}  />
+
           <Route exact path='/quizzes/ruby/questions/1' render={() =>  <Question currentQuestion={this.state.currentQuestion} currentAns={this.state.currentAnswer} answers={this.state.answers} onClick={this.handleNextQuestion.bind(this)} />} />
           <Route path='/quizzes/ruby/questions/:id' render={({match}) => {
             const question = this.state.questions.find(question => question.id === parseInt(match.params.id))
               return <QuestionShow questions={question}/> }}/>
           <Route path='/quizzes' render={() =>  <QuizSelection questions={this.state.questions}/>}/>
-          <Route path='/login' component={UsersContainer} />
+          <Route path='/signup' component={UsersContainer} />
         </Switch>
       </div>
     )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Container, Form, Grid, Header, Icon } from 'semantic-ui-react'
 import { Link, Switch, Route } from 'react-router-dom'
+import ProfileCard from './ProfileCard'
 
 export default class UserForm extends React.Component {
 
@@ -15,7 +16,7 @@ export default class UserForm extends React.Component {
 
   }
     this.handleUserChange = this.handleUserChange.bind(this)
-    // this.handleUserNaeChange = this.handleUserNameChange.bind(this)
+    // this.handleUserNameChange = this.handleUserNameChange.bind(this)
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
     this.handleLastNameChange = this.handleLastNameChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
@@ -60,6 +61,7 @@ export default class UserForm extends React.Component {
 
   render(){
     return (
+<div>
       <Container text>
         <Grid centered>
           <Grid.Row container centered><br/><br/>
@@ -84,7 +86,12 @@ export default class UserForm extends React.Component {
         </Grid.Row>
         </Grid.Row>
       </Grid>
+
     </Container>
+    <Route path='/profile' render={() =>  <ProfileCard user={this.state.user}/>}  />
+  </div>
+
+
     )
   }
 }

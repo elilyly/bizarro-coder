@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import UsersApp from '../UsersApp'
 // import UserForm from '../UserForm'
-
+import { Route, Redirect, Switch } from 'react-router-dom'
+import ProfileCard from '../ProfileCard'
 import { fetchUsers, createUser }  from '../api'
 
 class UsersContainer extends Component {
@@ -27,7 +28,11 @@ class UsersContainer extends Component {
 
   render(){
     return (
-      <UsersApp users={this.state.users} onSubmit={this.handleAddUser.bind(this)} />
+
+      <div>
+
+        <UsersApp users={this.state.users} onSubmit={this.handleAddUser.bind(this)} />
+</div>
     )
   }
 }
