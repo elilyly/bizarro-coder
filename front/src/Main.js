@@ -1,54 +1,76 @@
 import React, { Component } from 'react'
-import { fetchQuestions, fetchAnswers, createUserAnswers, logIn }  from './api/index'
+import {
+  createUserAnswers,
+  logIn,
+  fetchCurrentUser
+}  from './api/index'
 import { Switch, Route, withRouter } from 'react-router-dom'
 
 import ProfileCard from './ProfileCard'
 import Question from './Question'
 import QuestionShow from './QuestionShow'
+import Quiz from './Quiz'
 import QuizSelection from './QuizSelection'
 import UsersContainer from './containers/UsersContainer'
 import Home from './Home'
+import Logout from './Logout'
 import LoginForm from './LoginForm'
 import isAuthenticated from './hocs/isAuthenticated'
+import NavBar from './NavBar'
 
 const AuthedUsersContainer = isAuthenticated(UsersContainer)
+const AuthenticatedQuizSelection = isAuthenticated(QuizSelection)
+const AuthenticatedProfileCard = isAuthenticated(ProfileCard)
 
 class Main extends Component {
   constructor(props) {
     super(props)
     this.handleLogin = this.handleLogin.bind(this)
+    this.setCurrentUser = this.setCurrentUser.bind(this)
 
     this.state = {
-      questions: [],
-      currentQuestion: null,
-      answers: [],
-      currentAnswer: null
+      // questions: [],
+      // // currentQuestion: null,
+      // answers: [],
+      // currentAnswer: null,
+      currentUser: null
     }
+  }
+
+  componentDidMount() {
+    // console.log("Hi I'm in Main");
+    fetchCurrentUser()
+      .then(({ user, error }) => {
+        if (!error) {
+          this.setCurrentUser(user)
+        }
+      })
+  //   fetchQuestions()
+  //   .then( questions => this.setState({
+  //     questions: questions,
+  //     currentQuestion: questions[0]
+  //   }))
+  //   fetchAnswers()
+  //   .then( answers => this.setState({
+  //     answers: answers,
+  //     currentAnswer: answers[0]
+  //   }))
+    }
+
+  setCurrentUser(currentUser, callback) {
+    this.setState({ currentUser }, callback)
   }
 
   handleLogin(params){
     logIn(params)
-    .then(res => {
-      if(res.error) {
-        return
-      }
-      localStorage.setItem('jwt', res.token)
-      this.props.history.push('/profile')
-    })
-  }
-
-  componentDidMount() {
-    console.log("Hi I'm in Main");
-    fetchQuestions()
-    .then( questions => this.setState({
-      questions: questions,
-      currentQuestion: questions[0]
-    }))
-    fetchAnswers()
-    .then( answers => this.setState({
-      answers: answers,
-      currentAnswer: answers[0]
-    }))
+      .then(res => {
+        if (!res.errors) {
+          this.setCurrentUser(
+            res.user,
+            () => this.props.history.push('/profile')
+          )
+        }
+      })
   }
 
   handleNextQuestion(){
@@ -62,23 +84,78 @@ class Main extends Component {
     })
   }
 
-
   render() {
+    const { currentUser } = this.state
     return(
-      <div>
+      <div className="container-fluid">
+        <NavBar currentUser={currentUser} />
+        <br />
+        <br />
+        <br />
         <Switch>
-          <Route path='/out' component={Home} />
-          <Route path='/login' render={() => <LoginForm handleLogin={this.handleLogin}/>}/>
-          <Route path='/profile' component={ProfileCard}  />
-          <Route path='/profile' component={AuthedUsersContainer}/>
+          <Route
+            path='/logout'
+            render={props =>
+              <Logout
+                {...props}
+                setCurrentUser={this.setCurrentUser}
+              />
+            }
+          />
+          <Route
+            path='/login'
+            render={props => {
+              return (
+                <LoginForm
+                  {...props}
+                  handleLogin={this.handleLogin}
+                />
+              )
+            }}
+          />
+          <Route
+            path='/signup'
+            render={props => {
+              return (
+                <UsersContainer
+                  {...props}
+                  setCurrentUser={this.setCurrentUser}
+                />
+              )
+            }}
+          />
+          <Route
+            path='/profile'
+            render={props =>
+              <AuthenticatedProfileCard
+                {...props}
+                currentUser={currentUser}
+              />
+            }
+          />
+
           <Route exact path='/quizzes/ruby/questions/1' render={() =>  <Question currentQuestion={this.state.currentQuestion} currentAns={this.state.currentAnswer} answers={this.state.answers} onClick={this.handleNextQuestion.bind(this)} />} />
           <Route path='/quizzes/ruby/questions/:id' render={({match}) => {
             const question = this.state.questions.find(question => question.id === parseInt(match.params.id))
               return <QuestionShow questions={question}/> }}/>
-          <Route path='/quizzes' render={() =>  <QuizSelection questions={this.state.questions}/>}/>
-          <Route path='/signup' component={UsersContainer} />
+
+          <Route
+            path='/quizzes/:id'
+            component={Quiz}
+          />
+          <Route
+            path='/quizzes'
+            render={props =>
+              <AuthenticatedQuizSelection
+                {...props}
+                questions={this.state.questions}
+              />
+            }
+          />
+          <Route path='/' component={Home} />
         </Switch>
       </div>
+
     )
   }
 }

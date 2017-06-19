@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :questions, only: [:index, :show]
-      resources :answers, only: [:index, :show]
-      resources :users
-      resources :user_answers, only: [:index, :show, :update]
-      resources :quizzes, only: [:index, :show, :destroy]
-      resources :auth,  only:[:create]
+      # Users and Authentication
+      resources :users do
+        collection { get :me }
+        resources :user_answers, only: [:create]
+      end
+      resources :auth
+      post '/login', to: 'auth#sign_in'
+
+      # Quizzes and Answers
+      resources :quizzes, only: [:index] do
+        resources :questions, only: [:index]
+      end
     end
   end
 end

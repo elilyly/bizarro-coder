@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170613160542) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string "answers"
+    t.string "content"
     t.integer "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170613160542) do
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.integer "user_id"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

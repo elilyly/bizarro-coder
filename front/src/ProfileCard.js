@@ -26,8 +26,8 @@ const ProfileCard = (props) => (
         <Card>
           <Image src='http://24.media.tumblr.com/tumblr_mcrbpe6AYQ1rf9u8oo1_250.gif' />
           <Card.Content>
-            <Card.Header>Name: {props.user} </Card.Header>
-            <Card.Description>Marge is a comedian living in Springfield.</Card.Description>
+            <Card.Header>Name: {props.currentUser && props.currentUser.username} </Card.Header>
+            <Card.Description>{props.currentUser && props.currentUser.username} is a comedian living in Springfield.</Card.Description>
           </Card.Content>
         </Card>
       </Grid.Column>

@@ -6,36 +6,33 @@ import ProfileCard from '../ProfileCard'
 import { fetchUsers, createUser }  from '../api'
 
 class UsersContainer extends Component {
-  constructor(){
-    super()
-    this.state = {
-      users: []
-    }
-  }
-
   componentDidMount(){
-    if (!localStorage.getItem('jwt')){
-      return this.props.history.push('/login')
+    if (localStorage.getItem('jwt')) {
+      this.props.history.push('/profile')
     }
-    fetchUsers()
-      .then( users => this.setState({
-        users: users
-      }) )
+    // fetchUsers()
+    //   .then(user => this.setState({
+    //     currentUser: user
+    //   }) )
   }
 
-  handleAddUser(username, firstName, lastName, password){
+  handleAddUser(username, firstName, lastName, password) {
     createUser(username, firstName, lastName, password)
-      .then( user => this.setState( prevState =>  ({ users: [...prevState.users, user] }) ))
+      .then(res => {
+        const { user, token } = res;
+        this.props.setCurrentUser(
+          user,
+          () => this.props.history.push('/profile')
+        )
+      })
       .catch(e => console.log(e))
   }
 
   render(){
     return (
-
       <div>
-
-        <UsersApp users={this.state.users} onSubmit={this.handleAddUser.bind(this)} />
-</div>
+        <UsersApp onSubmit={this.handleAddUser.bind(this)} />
+      </div>
     )
   }
 }
