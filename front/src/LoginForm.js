@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { Button, Container, Form, Grid, Header, Input } from 'semantic-ui-react'
 
 
 export default class LoginForm extends Component {
@@ -32,18 +33,28 @@ export default class LoginForm extends Component {
 
   render(){
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username</label>
-          <input type='text' value={this.state.username} onChange={e => this.handleChange('username', e.target.value)}/>
-          <label>Password</label>
-          <input type='password' value={this.state.password} onChange={e => this.handleChange('password', e.target.value)}/>
-          <input type='submit' value='Log In'/>
-        </form>
-        <Link to='/signup'>Sign Up</Link>
-      </div>
+      <div >
+        <Grid columns={8}>
+          <Grid.Column></Grid.Column>
+          <Grid.Column width={6}>
+                <Header.Content>
+                 <p>Log In</p>
+              </Header.Content>
+            <Grid.Row><br/><br/>
+                <form onSubmit={this.handleSubmit}>
+                  <Input transparent size='medium' placeholder='Username' type='text' value={this.state.username} onChange={e => this.handleChange('username', e.target.value)}/>
+                  <br />
+                  <br />
+                  <Input transparent size='medium' placeholder='Password' type='password' value={this.state.password} onChange={e => this.handleChange('password', e.target.value)}/>
+                  <br />
+                  <br /><Button type='submit' content='Log In' />
+                </form>
+            <br />
+            <p>Don't have an account? <Link to='/signup'> Sign Up!</Link></p>
+          </Grid.Row>
+        </Grid.Column>
+      </Grid>
+    </div>
     )
   }
-
-
 }

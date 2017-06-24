@@ -12,10 +12,8 @@ export default class NavBar extends Component {
     const { activeItem } = this.state
 
     return (
-      <div className="ui page grid main">
-        <div className="row">
-          <div className="column padding-reset">
-            <div className="ui fixed inverted menu navbar">
+      
+            <div>
               <Menu color='black' inverted >
                 <Menu.Item header>BizarroCoder</Menu.Item>
                   <Link to='/profile'><Menu.Item name='profile' active={activeItem === 'profile'} onClick={this.handleItemClick}/></Link>
@@ -42,13 +40,13 @@ export default class NavBar extends Component {
                         </Link>
                       )
                   }
-                  <Link to='/help'><Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}/></Link>
+                  <Link to='/demo'><Menu.Item name='demo' active={activeItem === 'demo'} onClick={this.handleItemClick}/></Link>
                </Menu.Menu>
               </Menu>
             </div>
-          </div>
-        </div>
-      </div>
+          // </div>
+      //   </div>
+      // </div>
     )
   }
 }

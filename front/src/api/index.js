@@ -25,8 +25,6 @@ export function fetchCurrentUser() {
 }
 
 export function fetchUsers(){
-  // TODO: this should make a request to auth controller, index application
-  // which has the appropriate logic for decoding a jwt token
   return fetch("http://localhost:3000/api/v1/users", {
     headers: {
       'Authorization': localStorage.getItem('jwt')

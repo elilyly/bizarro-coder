@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { Grid, Form, Card, Button, TextArea, Progress } from 'semantic-ui-react'
 // import Question from './Question'
+import { Link, Route, Redirect } from 'react-router-dom'
+
 // import Main from './Main'
 import NextQuestion from './NextQuestion'
+import ProfileCard from './ProfileCard'
 
 export default class QuestionShow extends Component {
   constructor(props) {
@@ -10,8 +13,9 @@ export default class QuestionShow extends Component {
     this.state = {
       input: ''
     }
+    this.handleRedirect = this.handleRedirect.bind(this)
   }
-//correctAnswer
+
   handleInputChange(e){
     console.log('Hi, I`m in NextQuestion', e.target.value);
     this.setState({
@@ -21,24 +25,26 @@ export default class QuestionShow extends Component {
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.question.answers.includes(this.state.input)
-      ? this.props.increment()
-      : alert('wrong answer')
+    this.props.question.answers.includes(this.state.input) ? this.props.increment() : alert('wrong answer :( ')
 
     this.setState({
       input: ''
     })
   }
 
+  handleRedirect(){
+    if(this.props.questionIndex === 8) {
+      <Redirect to='/profile' />
+    }
+  }
 
   render() {
     const { question, questionIndex } = this.props
     const { id, content } = question;
 
     return (
-      <div className="ui page grid main fluid">
-        <div className="row">
-          <div className="column padding-reset">
+      //   <div className="row">
+          <div  className='QuestionFormat'>
             <Grid centered>
               <Grid.Row container centered><br/><br/>
               <Card.Group><br/><br/><br/><br/>
@@ -74,8 +80,8 @@ export default class QuestionShow extends Component {
         </Grid.Row>
       </Grid>
     </div>
-  </div>
-</div>
+//   </div>
+// </div>
 )
   }
 }

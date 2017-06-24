@@ -13,21 +13,20 @@
   //filter answer_id & questionid
 
   return (
-    <div className="ui page grid main fluid">
-      <div className="row">
-        <div className="column padding-reset">
+
+    <div>
           <Grid centered>
             <Grid.Row container centered><br/>
               <Grid.Row container centered><br/><br/><br/>
               <h1> Start your Quiz! </h1>
-              <div>
+              <div >
                 <QuestionShow key={props.currentQuestion.id} id={props.currentQuestion.id} question={props.currentQuestion.content} answers={props.answers} currentAns={props.currentAns} onClick={props.onClick}/>
               </div>
               </Grid.Row>
             </Grid.Row>
           </Grid>
         </div>
-      </div>
-    </div>
+    //   </div>
+    // </div>
   )
 }

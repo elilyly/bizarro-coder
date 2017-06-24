@@ -6,6 +6,5 @@ import Main from './Main'
 // import QuizContainer from './containers/QuizContainer'
 // import Home from './Home'
 // import Help from './Help'
-import './App.css'
 
 export default Main;

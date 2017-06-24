@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Progress, Form, TextArea, Header, Modal  } from 'semantic-ui-react'
+import { Link, Route, Redirect } from 'react-router-dom'
+import { Button, Progress, Form, TextArea, Header, Grid, Popup } from 'semantic-ui-react'
 import { fetchQuestions, fetchAnswers, createUserAnswers }  from './api/index'
-
+import ProfileCard from './ProfileCard'
 export default class NextQuestion extends Component {
   constructor(props) {
     super(props)
@@ -10,7 +10,7 @@ export default class NextQuestion extends Component {
     this.state = {
       percent: 0,
       questions: [],
-      input: '',
+      input: ''
       // correctAnswer: null
       // step: 0
     }
@@ -41,19 +41,25 @@ export default class NextQuestion extends Component {
   render() {
     // const { correctAnswer } = this.state;
     return (
-      <div centered>
-        <Link to='/quizzes/ruby/questions/:id'></Link>
-        <Form onSubmit={this.handleSubmit.bind(this)}>
-          <TextArea placeholder="Enter Answer..." autoHeight value={this.state.input} onChange={this.handleInputChange.bind(this)} />
-          <Button type="submit" basic size='small' onClick={this.increment.bind(this)}>Next</Button>
-          <Progress percent={this.state.percent} />
-        </Form><br/><br/>
+      <div>
+        <Grid columns={1}>
+          <Grid.Column width={6}>
 
-        {/* <Modal trigger=> */}
-        {/* <Modal.Content>
-          <img src={'https://media.giphy.com/media/GiIaqnaKSvOaA/giphy.gif'} className="img-responsive"/>
-        </Modal.Content>
-      </Modal> */}
+            <Form onSubmit={this.handleSubmit.bind(this)}>
+              <TextArea placeholder="Enter Answer..." autoHeight value={this.state.input} onChange={this.handleInputChange.bind(this)} />
+
+              <Button type="submit" basic size='small' onClick={this.increment.bind(this)}>Next</Button>
+
+              <Progress percent={this.state.percent} />
+            </Form><br/><br/>
+
+          </Grid.Column>
+        {/* <Link to='/quizzes/ruby/questions/:id'></Link> */}
+
+
+
+    </Grid>
+
       </div>
     )
   }

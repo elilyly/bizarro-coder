@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Switch, Route } from 'react-router-dom'
-import { Grid, Form, TextArea } from 'semantic-ui-react'
+import { Grid, Form, TextArea, Header } from 'semantic-ui-react'
 import QuizSelection from './QuizSelection'
 import QuestionShow from './QuestionShow'
 import NextQuestion from './NextQuestion'
@@ -31,7 +31,7 @@ export default class Quiz extends Component {
   currentQuestion() {
     const { questions, questionIndex } = this.state;
 
-    return questions[questionIndex];
+    return questions[questionIndex]
   }
 
   render(){
@@ -39,15 +39,11 @@ export default class Quiz extends Component {
     const { questions, questionIndex } = this.state;
 
     return(
-      <div className="ui page grid main fluid">
-        <div className="row">
-          <div className="column padding-reset">
-            <Grid centered>
-              <Grid.Row container centered><br/><br/>
-                {/* <h1>Questions</h1> */}
-                <br/>
-                <br/>
-                <br/>
+        <div>
+            <Grid columns={12}>
+                <Grid.Column></Grid.Column>
+                <Grid.Column width={6}>
+                  <Grid.Row><br/><br/>
                 {currentQuestion && (
                   <QuestionShow
                     question={currentQuestion}
@@ -60,13 +56,19 @@ export default class Quiz extends Component {
                     }}
                   />
                 )}
+              {/* </Grid.Row> */}
+              <Grid.Row><br/><br/>
+              <Grid.Column width={3} >
+                <h4 className="line-1 anim-typewriter">Are you sure?</h4>
+              </Grid.Column>
               </Grid.Row>
-              <Grid.Row container centered><br/><br/>
-              </Grid.Row>
+            </Grid.Row>
+          </Grid.Column>
             </Grid><br/><br/><br/><br/>
+
           </div>
-        </div>
-      </div>
+
+
     )
   }
 }

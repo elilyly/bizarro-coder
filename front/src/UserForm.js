@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, Form, Grid, Header, Icon } from 'semantic-ui-react'
+import { Button, Container, Form, Grid, Header, Icon, Input } from 'semantic-ui-react'
 import { Link, Switch, Route } from 'react-router-dom'
 import ProfileCard from './ProfileCard'
 
@@ -12,7 +12,7 @@ export default class UserForm extends React.Component {
       // username: '',
       firstName: '',
       lastName: '',
-      password: '',
+      password: ''
 
   }
     this.handleUserChange = this.handleUserChange.bind(this)
@@ -29,7 +29,7 @@ export default class UserForm extends React.Component {
       user: e.target.value
     })
   }
-
+  //
   handleFirstNameChange(e){
     this.setState({
       firstName: e.target.value
@@ -46,7 +46,7 @@ export default class UserForm extends React.Component {
       password: e.target.value
     })
   }
-
+// this.state.firstName, this.state.lastName,
   handleSubmit(e){
     e.preventDefault()
     // console.log(this.state.user);
@@ -61,36 +61,37 @@ export default class UserForm extends React.Component {
 
   render(){
     return (
-<div>
-      <Container text>
-        <Grid centered>
-          <Grid.Row container centered><br/><br/>
-            <Header as='h2'>
-              {/* <Icon name='sign up'/> */}
-              <Header.Content>
-                Create an Account
+      <div className="wow">
+        <Grid columns={8}>
+          <Grid.Column></Grid.Column>
+          <Grid.Column width={6}>
+                <Header.Content>
+                 <p>Sign Up</p>
               </Header.Content>
-            </Header>
-          <Grid.Row container centered><br/><br/>
-          <Form>
-            <Form.Field>
-              <form onSubmit={this.handleSubmit.bind(this)}>
-                <input placeholder='Username' type='text' value={this.state.user} onChange={this.handleUserChange}/>
-                <input placeholder='First Name' type='text' value={this.state.firstName} onChange={this.handleFirstNameChange}/>
-                <input placeholder='Last Name' type='text' value={this.state.lastName} onChange={this.handleLastNameChange}/>
-                <input placeholder='Password' type='password' value={this.state.password} onChange={this.handlePasswordChange}/>
-                <input type='submit' value='sign up'/>
-              </form>
-            </Form.Field>
-          </Form>
-        </Grid.Row>
-        </Grid.Row>
+            <Grid.Row><br/><br/>
+            <Form>
+              <Form.Field>
+                <form onSubmit={this.handleSubmit.bind(this)}>
+                  <Input transparent placeholder='Username' size='medium' type='text' value={this.state.user} onChange={this.handleUserChange}/><br />
+                  <br />
+                  <br />
+                  <Input transparent placeholder='First Name' size='medium' type='text' value={this.state.firstName} onChange={this.handleFirstNameChange}/><br />
+                  <br />
+                  <br />
+                  <Input transparent placeholder='Last Name' size='medium' type='text' value={this.state.lastName} onChange={this.handleLastNameChange}/><br />
+                  <br />
+                  <br />
+                  <Input transparent placeholder='Password' size='medium' type='password' value={this.state.password} onChange={this.handlePasswordChange}/>
+                  <br />
+                  <br /><Button type='submit' content='Create Account' />
+                </form>
+              </Form.Field>
+            </Form>
+          </Grid.Row>
+        </Grid.Column>
       </Grid>
-    </Container>
-    <Route path='/profile' render={() =>  <ProfileCard user={this.state.user}/>}  />
-  </div>
-
-
+      <Route path='/profile' render={() =>  <ProfileCard user={this.state.user}/>}  />
+    </div>
     )
   }
 }

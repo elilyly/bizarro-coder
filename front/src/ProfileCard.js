@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Image, Grid, List } from 'semantic-ui-react'
+import { Card, Image, Grid, List, Header, Table } from 'semantic-ui-react'
 
 // import UserForm from './UserForm'
 
@@ -9,31 +9,60 @@ import { Card, Image, Grid, List } from 'semantic-ui-react'
   fontWeight:'light'
   };
 
-
 const ProfileCard = (props) => (
-  <Grid container columns={3}>
-    <Grid.Row>
-    </Grid.Row>
-    <Grid.Row>
-      <Grid.Column width={4}>
-      <h1 style={styles}>Play, if you dare...</h1>
-      </Grid.Column>
-    </Grid.Row>
-    <Grid.Row>
-    </Grid.Row>
-    <Grid.Row>
-      <Grid.Column width={4}>
-        <Card>
-          <Image src='http://24.media.tumblr.com/tumblr_mcrbpe6AYQ1rf9u8oo1_250.gif' />
-          <Card.Content>
-            <Card.Header>Name: {props.currentUser && props.currentUser.username} </Card.Header>
-            <Card.Description>{props.currentUser && props.currentUser.username} is a comedian living in Springfield.</Card.Description>
-          </Card.Content>
-        </Card>
+  <Grid columns={7}>
+    <Grid.Column></Grid.Column>
+
+        <Grid.Column width={6}>
+            <h3>Report Card</h3>
+          <Table celled collapsing>
+         <Table.Header>
+           <Table.Row>
+             <Table.HeaderCell><h3>Language</h3></Table.HeaderCell>
+             <Table.HeaderCell><h3>Grade</h3></Table.HeaderCell>
+           </Table.Row>
+         </Table.Header>
+
+         <Table.Body>
+           <Table.Row>
+             <Table.Cell>
+               <Header as='h3' image>
+                 <Image src='http://nakulpathak.com/assets/projects/rails_api-a6bf58d9a9826f72fe05ad85079ee88111294b1c4061718ae06f0a7dbca39963.png' shape='rounded' size='mini' />
+                 <Header.Content>
+                   Ruby
+                 </Header.Content>
+               </Header>
+             </Table.Cell>
+             <Table.Cell>
+               <h3>6/10</h3>
+             </Table.Cell>
+           </Table.Row>
+           <Table.Row>
+             <Table.Cell>
+               <Header as='h3' image>
+                 <Image src='https://www.codementor.io/assets/page_img/learn-javascript.png' shape='rounded' size='mini'/>
+                 <Header.Content>
+                   Javascript
+                 </Header.Content>
+               </Header>
+             </Table.Cell>
+             <Table.Cell>
+               <h3>10/10</h3>
+             </Table.Cell>
+           </Table.Row>
+
+         </Table.Body>
+        </Table>
+            </Grid.Column>
+            <Grid.Column></Grid.Column>
+
+      <Grid.Column  width={7} >
+        <h4 className="line-1 anim-typewriter3">Oh, hi. Didn't notice you.</h4><br /><br />
+        <h4 className="line-1 anim-typewriter2">How are you today {props.currentUser && props.currentUser.username}? hmm</h4>
       </Grid.Column>
 
-      <Grid.Column width={4}>
-        <h1 style={styles}>Games Won</h1>
+      {/* <Grid.Column width={4}>
+        <h2 style={styles}>Games Won</h2>
         <List relaxed='very'>
           <List.Item>
             <Image avatar src='https://www.codementor.io/assets/page_img/learn-javascript.png'/>
@@ -46,7 +75,7 @@ const ProfileCard = (props) => (
       </Grid.Column>
 
       <Grid.Column width={4}>
-        <h1 style={styles}>Games Lost</h1>
+        <h2 style={styles}>Games Lost</h2>
         <List relaxed='very'>
           <List.Item>
             <Image avatar src='http://nakulpathak.com/assets/projects/rails_api-a6bf58d9a9826f72fe05ad85079ee88111294b1c4061718ae06f0a7dbca39963.png'/>
@@ -57,9 +86,17 @@ const ProfileCard = (props) => (
             </List.Content>
           </List.Item>
         </List>
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
+      </Grid.Column> */}
+    </Grid>
 )
 
 export default ProfileCard
+{/* <Grid.Column width={3}>
+  <Card>
+    <Image src='http://24.media.tumblr.com/tumblr_mcrbpe6AYQ1rf9u8oo1_250.gif' />
+    <Card.Content>
+      <Card.Header>Name: {props.currentUser && props.currentUser.username} </Card.Header>
+      <Card.Description>{props.currentUser && props.currentUser.username} is a comedian living in Springfield.</Card.Description>
+    </Card.Content>
+  </Card>
+</Grid.Column> */}

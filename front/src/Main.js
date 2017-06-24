@@ -45,16 +45,6 @@ class Main extends Component {
           this.setCurrentUser(user)
         }
       })
-  //   fetchQuestions()
-  //   .then( questions => this.setState({
-  //     questions: questions,
-  //     currentQuestion: questions[0]
-  //   }))
-  //   fetchAnswers()
-  //   .then( answers => this.setState({
-  //     answers: answers,
-  //     currentAnswer: answers[0]
-  //   }))
     }
 
   setCurrentUser(currentUser, callback) {
@@ -87,7 +77,7 @@ class Main extends Component {
   render() {
     const { currentUser } = this.state
     return(
-      <div className="container-fluid">
+        <div className="Main" centered>
         <NavBar currentUser={currentUser} />
         <br />
         <br />
