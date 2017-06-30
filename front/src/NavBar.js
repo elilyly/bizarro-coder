@@ -12,7 +12,7 @@ export default class NavBar extends Component {
     const { activeItem } = this.state
 
     return (
-      
+
             <div>
               <Menu color='black' inverted >
                 <Menu.Item header>BizarroCoder</Menu.Item>
@@ -40,7 +40,7 @@ export default class NavBar extends Component {
                         </Link>
                       )
                   }
-                  <Link to='/demo'><Menu.Item name='demo' active={activeItem === 'demo'} onClick={this.handleItemClick}/></Link>
+                  {/* <Link to='/demo'><Menu.Item name='demo' active={activeItem === 'demo'} onClick={this.handleItemClick}/></Link> */}
                </Menu.Menu>
               </Menu>
             </div>
